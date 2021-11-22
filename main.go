@@ -1,7 +1,6 @@
 package main
 
 import (
-	"awesomeProject/server"
 	"context"
 	"fmt"
 	"github.com/segmentio/kafka-go"
@@ -9,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"trainingProj/websockets"
 )
 
 func main() {
@@ -65,7 +65,7 @@ func main() {
 	if err = conn.Close(); err != nil {
 		log.Fatal("failed to close connection: ", err)
 	}
-	http.Handle("/", websocket.Handler(server.Echo))
+	http.Handle("/", websocket.Handler(websockets.Echo))
 
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal("ListenAndServe:", err)
