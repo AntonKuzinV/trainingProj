@@ -3,6 +3,7 @@ package websockets
 import (
 	"fmt"
 	"golang.org/x/net/websocket"
+	"time"
 )
 
 func Echo(ws *websocket.Conn) {
@@ -20,5 +21,6 @@ func Echo(ws *websocket.Conn) {
 			break
 		}
 		fmt.Println(reply)
+		time.Sleep(5 * time.Millisecond)
 	}
 }

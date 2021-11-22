@@ -17,14 +17,17 @@
 
         sock.onmessage = function(e) {
             console.log("message received: " + e.data);
-            console.log("message sent");
-            sock.send("Message from frontend");
             const list = document.getElementById('events-list');
             const listItem = document.createElement('li');
             listItem.appendChild(document.createTextNode(e.data));
             list.appendChild(listItem);
         }
     };
+    setInterval(function() {
+        console.log("message sent");
+        sock.send("Message from frontend");
+    }, 500)
+
 
 
 </script>
